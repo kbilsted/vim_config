@@ -6,7 +6,34 @@
 "
 "
 " to reload the config use ':source c:\users\<user>\.vsvimrc'
-
+"
+" -- NOTES --
+" Windows interprets Ctrl+Alt as AltGr
+" Windows interprets Ctrl-I is identical to TAB
+" Windows interprets Ctrl-[ is identical to ESC
+"
+"
+" -- VS VIM notes --
+" control-keybinds that dont interfere too much
+" Ctrl-l (cut line)
+" Ctrl-o (open file) -> vim (one command in normal mode)
+"
+"## ideas
+"## 
+"## backward search from EOL
+"## &{int} -> ${int}h
+"## ¤fo		-> $?fo
+"
+"##  nnoremap gi :vsc Resharper.Resharper_GotoImplementation<CR>
+"##  nnoremap ge :vsc Resharper.Resharper_GotoNextErrorInSolution<CR>
+"##  nnoremap gh :vsc Resharper.Resharper_GotoNextHighlight<CR>
+"##  nnoremap gm :vsc Resharper.Resharper_GotoFileMember<CR>
+"##  nnoremap gu :vsc Resharper.Resharper_UnitTest_RunSolution<CR>
+"##  nnoremap gr :vsc Resharper.Resharper_Resharper_UnitTest_RunContext<CR>
+"##  nnoremap g2 :vsc Resharper.Resharper_Resharper_UnitTest_DebugContext<CR>
+"##  nnoremap gU :vsc Resharper.Resharper_ShowUnitTestSessions<CR><C-F4>
+	
+	
 
 " get current line + relative numbers better than 'set relativenumber'
 set number relativenumber 	
@@ -17,21 +44,18 @@ set clipboard=unnamed
 " The number of screen lines to keep above and below the cursor.
 set scrolloff=9 
 
-" escape substitute 
 
 " -- search --
 "DONT SET 'set hlsearch' since we have to clear highlight again
 "enable incremental search 
 set incsearch 				
 "defaults to ignore case search
-set ignorecase 
+set ignorecase 						
 "search will be case sensitive if search pattern contains upper case character
 set smartcase 				
 
 
 " easier than esc
-inoremap kd <Esc>
-inoremap jj <Esc>
 inoremap <A-o> <Esc>
 
 inoremap <A-v> <Esc>v
@@ -49,33 +73,6 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 
-" -- delete not cut -- 
-nnoremap x "_x
-nnoremap X "_X
-
-"nnoremap diw "_diw
-"nnoremap ciw "_ciw
-"nnoremap diq "_di"
-"nnoremap ciq "_ci"
-" -- motions -- 
-"in vim already: b = ()
-"in vim already: B = {}
-"quote 
-nnoremap caq ca"
-nnoremap ciq ci"
-nnoremap daq da"
-nnoremap diq di"
-"array 
-nnoremap dia "_di[
-nnoremap cia "_ci[
-"match
-nnoremap dm d%
-nnoremap cm c%
-
-
-"inoremap ,, <esc>:vsc Window.PreviousTab<CR>
-"nnoremap ,, <esc>:vsc Window.PreviousTab<CR>
-
 
 " -- code insert -- 
 inoremap jk {<Esc>li
@@ -92,19 +89,36 @@ inoremap <C-l> <Esc>:vsc Edit.GoToDefinition<CR>
 " require vs-vim to handle control-sequence
 inoremap <C-j> <Esc>:vsc Edit.FindAllReferences<CR>
 
-" -- visual 
-" -- selection -- 
-" multi-line select with ctrl+alt+cursor - works out of the box
-" Amazing VS functionality
-inoremap <C-I> <Esc>:vsc Edit.ExpandSelection<CR>
-nnoremap <C-I> :vsc Edit.ExpandSelection<CR>
-vnoremap <C-I> :vsc Edit.ExpandSelection<CR>
-vnoremap i :vsc Edit.ExpandSelection<CR>
-vnoremap I :vsc Edit.ContractSelection<CR>
+
 "first char
 vnoremap H ^
 "EOL
 vnoremap L g_
+
+
+
+" Windows interprets Ctrl+Alt as AltGr
+nnoremap <C-A-u> 7
+nnoremap <C-A-i> 8
+nnoremap <C-A-o> 9
+nnoremap <C-A-j> 4
+nnoremap <C-A-k> 5
+nnoremap <C-A-l> 6
+nnoremap <C-A-æ> 0
+nnoremap <C-A-m> 1
+nnoremap <C-A-,> 2
+nnoremap <C-A-.> 3
+
+
+" -- visual 
+" -- selection -- 
+" multi-line select with ctrl+alt+cursor - works out of the box
+" Amazing VS functionality
+inoremap <C-A-I> <Esc>:vsc Edit.ExpandSelection<CR>
+nnoremap <C-A-I> :vsc Edit.ExpandSelection<CR>
+vnoremap <C-A-I> :vsc Edit.ExpandSelection<CR>
+vnoremap i :vsc Edit.ExpandSelection<CR>
+vnoremap I :vsc Edit.ContractSelection<CR>
 
 
 
@@ -145,6 +159,7 @@ nnoremap D "aD
 "tempting to remap H to BOL - but we have 'A' or 'C' for that
 nnoremap H "_daw	
 
+" TODO test what we prefer - 12j or <c-d>
 "down and re-center
 nnoremap J <C-d>zz
 vnoremap J 12jzz
