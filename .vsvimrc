@@ -6,6 +6,8 @@
 "
 "
 " to reload the config use ':source c:\users\<user>\.vsvimrc'
+
+
 " get current line + relative numbers better than 'set relativenumber'
 set number relativenumber 	
 
@@ -15,14 +17,15 @@ set clipboard=unnamed
 " The number of screen lines to keep above and below the cursor.
 set scrolloff=9 
 
+" escape substitute 
 
-" search 
-" DONT SET 'set hlsearch' since we have to clear highlight again
-" enable incremental search 
+" -- search --
+"DONT SET 'set hlsearch' since we have to clear highlight again
+"enable incremental search 
 set incsearch 				
-" defaults to ignore case search
-set ignorecase 						
-" search will be case sensitive if search pattern contains upper case character
+"defaults to ignore case search
+set ignorecase 
+"search will be case sensitive if search pattern contains upper case character
 set smartcase 				
 
 
@@ -45,13 +48,44 @@ inoremap <A-l> <Esc>li
 nnoremap <SPACE> <Nop> 		
 let mapleader=" "
 
-" -- code insert -- 
 
+" -- delete not cut -- 
+nnoremap x "_x
+nnoremap X "_X
+
+"nnoremap diw "_diw
+"nnoremap ciw "_ciw
+"nnoremap diq "_di"
+"nnoremap ciq "_ci"
+" -- motions -- 
+"in vim already: b = ()
+"in vim already: B = {}
+"quote 
+nnoremap caq ca"
+nnoremap ciq ci"
+nnoremap daq da"
+nnoremap diq di"
+"array 
+nnoremap dia "_di[
+nnoremap cia "_ci[
+"match
+nnoremap dm d%
+nnoremap cm c%
+
+
+"delete line -- replace 'go to previous line'
+nnoremap - "_dd				
+
+inoremap ,, <esc>:vsc Window.PreviousTab<CR>
+nnoremap ,, <esc>:vsc Window.PreviousTab<CR>
+
+
+" -- code insert -- 
 inoremap jk {<Esc>li
 inoremap jl [<Esc>li
 inoremap jæ (<Esc>li
-inoremap ææ <Esc>A;
-inoremap øø <Esc>/[)}"'\]>]<CR>:nohl<CR>a<space>
+inoremap aæ <Esc>A;
+inoremap aø <Esc>/[)}"'\]>]<CR>:nohl<CR>a<space>
 
 " require vs-vim to handle control-sequence
 "save if file is changed and go to normal mode
@@ -131,13 +165,15 @@ nnoremap M }zz
 vnoremap M }zz
 
 
-vnoremap <leader>j J
 
 nnoremap u :vsc Edit.Undo<cr>
 nnoremap U :vsc Edit.Redo<cr> 
 
 
+nnoremap <leader>j J
+vnoremap <leader>j J
 
+nnoremap <leader>df :vsc Window.CloseDocumentWindow<CR>
 nnoremap <leader>gd :vsc Edit.GoToDefinition<CR>
 nnoremap <leader>gc :vsc Edit.GoToDeclaration<CR>
 nnoremap <leader>gi :vsc Edit.GoToImplementation<CR>
