@@ -73,19 +73,16 @@ nnoremap dm d%
 nnoremap cm c%
 
 
-"delete line -- replace 'go to previous line'
-nnoremap - "_dd				
-
-inoremap ,, <esc>:vsc Window.PreviousTab<CR>
-nnoremap ,, <esc>:vsc Window.PreviousTab<CR>
+"inoremap ,, <esc>:vsc Window.PreviousTab<CR>
+"nnoremap ,, <esc>:vsc Window.PreviousTab<CR>
 
 
 " -- code insert -- 
 inoremap jk {<Esc>li
 inoremap jl [<Esc>li
 inoremap jæ (<Esc>li
-inoremap aæ <Esc>A;
-inoremap aø <Esc>/[)}"'\]>]<CR>:nohl<CR>a<space>
+inoremap æa <Esc>A;
+inoremap øa <Esc>/[)}"'\]>]<CR>:nohl<CR>a<space>
 
 " require vs-vim to handle control-sequence
 "save if file is changed and go to normal mode
@@ -149,7 +146,7 @@ nnoremap D "aD
 nnoremap H "_daw	
 
 "down and re-center
-nnoremap J 12jzz
+nnoremap J <C-d>zz
 vnoremap J 12jzz
 
 "up and re-center
