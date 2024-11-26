@@ -57,6 +57,7 @@ set smartcase
 
 " easier than esc
 inoremap <A-o> <Esc>
+vnoremap <A-o> <Esc>
 
 inoremap <A-v> <Esc>v
 " alternative to vim ctr-o that goes to normal mode for 1 command
