@@ -149,25 +149,25 @@ nnoremap W ge
 vnoremap W ge			
 
 
-" Changes go to A register, leave my unnamed alone
+" C/D works as cut whereas in normal-mode it works as delete/cut-to-reg-a
+" leave my unnamed alone
 nnoremap c "ac
 nnoremap C "aC
 nnoremap d "ad
 nnoremap D "aD
+vnoremap C c
+vnoremap D d
 
 
 "delete word  - replace 'go to top of screen' 
-"tempting to remap H to BOL - but we have 'A' or 'C' for that
+"tempting to remap H to BOL - but we have 'A' or 'C', 'D', '_' for that
 nnoremap H "_daw	
 
-" TODO test what we prefer - 12j or <c-d>
-"down and re-center
-nnoremap J <C-d>zz
-vnoremap J 12jzz
-
-"up and re-center
-nnoremap K 12kzz
-vnoremap K 12kzz
+" up/down and re-center (<c-d> is too much scrolling)
+nnoremap J 19jzz
+vnoremap J 19jzz
+nnoremap K 19kzz
+vnoremap K 19kzz
 
 " replace go to bottom of screen
 nnoremap L :vsc Edit.GoToDefinition<CR>
@@ -185,8 +185,8 @@ nnoremap U :vsc Edit.Redo<cr>
 
 nnoremap <leader>j J
 vnoremap <leader>j J
+nnoremap <leader>q :vsc File.Close<CR>
 
-nnoremap <leader>df :vsc Window.CloseDocumentWindow<CR>
 nnoremap <leader>gd :vsc Edit.GoToDefinition<CR>
 nnoremap <leader>gc :vsc Edit.GoToDeclaration<CR>
 nnoremap <leader>gi :vsc Edit.GoToImplementation<CR>
