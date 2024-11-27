@@ -24,15 +24,6 @@
 "## &{int} -> ${int}h
 "## ¤fo		-> $?fo
 "
-"##  nnoremap gi :vsc Resharper.Resharper_GotoImplementation<CR>
-"##  nnoremap ge :vsc Resharper.Resharper_GotoNextErrorInSolution<CR>
-"##  nnoremap gh :vsc Resharper.Resharper_GotoNextHighlight<CR>
-"##  nnoremap gm :vsc Resharper.Resharper_GotoFileMember<CR>
-"##  nnoremap gu :vsc Resharper.Resharper_UnitTest_RunSolution<CR>
-"##  nnoremap gr :vsc Resharper.Resharper_Resharper_UnitTest_RunContext<CR>
-"##  nnoremap g2 :vsc Resharper.Resharper_Resharper_UnitTest_DebugContext<CR>
-"##  nnoremap gU :vsc Resharper.Resharper_ShowUnitTestSessions<CR><C-F4>
-	
 	
 
 " get current line + relative numbers better than 'set relativenumber'
@@ -44,6 +35,7 @@ set clipboard=unnamed
 " The number of screen lines to keep above and below the cursor.
 set scrolloff=9 
 
+set timeoutlen=500
 
 " -- search --
 "DONT SET 'set hlsearch' since we have to clear highlight again
@@ -59,7 +51,9 @@ set smartcase
 inoremap <A-o> <Esc>
 vnoremap <A-o> <Esc>
 
-inoremap <A-v> <Esc>v
+" doesnt work in vsvim inoremap <A-v> <Esc>v
+inoremap <A-a> <Esc>A
+
 " alternative to vim ctr-o that goes to normal mode for 1 command
 inoremap <A-h> <Esc>hi
 inoremap <A-j> <Esc>ji
@@ -76,6 +70,8 @@ let mapleader=" "
 
 
 " -- code insert -- 
+inoremap fd <CR>
+inoremap df ;
 inoremap jk {<Esc>li
 inoremap jl [<Esc>li
 inoremap jæ (<Esc>li
@@ -98,6 +94,7 @@ vnoremap L g_
 
 
 
+
 " Windows interprets Ctrl+Alt as AltGr
 nnoremap <C-A-u> 7
 nnoremap <C-A-i> 8
@@ -109,6 +106,31 @@ nnoremap <C-A-æ> 0
 nnoremap <C-A-m> 1
 nnoremap <C-A-,> 2
 nnoremap <C-A-.> 3
+
+
+"
+""nnoremap diw "_diw
+""nnoremap ciw "_ciw
+""nnoremap diq "_di"
+""nnoremap ciq "_ci"
+"" -- motions -- 
+""in vim already: b = ()
+""in vim already: B = {}
+""quote 
+"nnoremap caq ca"
+"nnoremap ciq ci"
+"nnoremap daq da"
+"nnoremap diq di"
+""array 
+"nnoremap dia "_di[
+"nnoremap cia "_ci[
+""match
+"nnoremap dm d%
+"nnoremap cm c%
+""inoremap ,, <esc>:vsc Window.PreviousTab<CR>
+""nnoremap ,, <esc>:vsc Window.PreviousTab<CR>
+"
+
 
 
 " -- visual 
@@ -149,6 +171,9 @@ nnoremap W ge
 vnoremap W ge			
 
 
+" -- delete and cut -- 
+nnoremap x "_x
+nnoremap X "_X
 " C/D works as cut whereas in normal-mode it works as delete/cut-to-reg-a
 " leave my unnamed alone
 nnoremap c "ac
@@ -187,6 +212,15 @@ nnoremap <leader>j J
 vnoremap <leader>j J
 nnoremap <leader>q :vsc File.Close<CR>
 
+"##  nnoremap gi :vsc Resharper.Resharper_GotoImplementation<CR>
+"##  nnoremap ge :vsc Resharper.Resharper_GotoNextErrorInSolution<CR>
+"##  nnoremap gh :vsc Resharper.Resharper_GotoNextHighlight<CR>
+"##  nnoremap gm :vsc Resharper.Resharper_GotoFileMember<CR>
+"##  nnoremap gu :vsc Resharper.Resharper_UnitTest_RunSolution<CR>
+"##  nnoremap gr :vsc Resharper.Resharper_Resharper_UnitTest_RunContext<CR>
+"##  nnoremap g2 :vsc Resharper.Resharper_Resharper_UnitTest_DebugContext<CR>
+"##  nnoremap gU :vsc Resharper.Resharper_ShowUnitTestSessions<CR><C-F4>
+	
 nnoremap <leader>gd :vsc Edit.GoToDefinition<CR>
 nnoremap <leader>gc :vsc Edit.GoToDeclaration<CR>
 nnoremap <leader>gi :vsc Edit.GoToImplementation<CR>
