@@ -194,13 +194,14 @@ vnoremap J 19jzz
 nnoremap K 19kzz
 vnoremap K 19kzz
 
+" down next block and re-center
+nnoremap M }
+vnoremap M }zz
+
 " replace go to bottom of screen
 nnoremap L :vsc Edit.GoToDefinition<CR>
 
 
-" down next block and re-center
-nnoremap M }zz
-vnoremap M }zz
 
 
 
@@ -212,7 +213,6 @@ nnoremap <leader>j J
 vnoremap <leader>j J
 nnoremap <leader>q :vsc File.Close<CR>
 
-"##  nnoremap gi :vsc Resharper.Resharper_GotoImplementation<CR>
 "##  nnoremap ge :vsc Resharper.Resharper_GotoNextErrorInSolution<CR>
 "##  nnoremap gh :vsc Resharper.Resharper_GotoNextHighlight<CR>
 "##  nnoremap gm :vsc Resharper.Resharper_GotoFileMember<CR>
