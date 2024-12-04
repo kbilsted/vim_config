@@ -212,6 +212,7 @@ nnoremap U :vsc Edit.Redo<cr>
 nnoremap <leader>j J
 vnoremap <leader>j J
 nnoremap <leader>q :vsc File.Close<CR>
+nnoremap <leader>w :vsc File.Exit<CR>
 
 "##  nnoremap ge :vsc Resharper.Resharper_GotoNextErrorInSolution<CR>
 "##  nnoremap gh :vsc Resharper.Resharper_GotoNextHighlight<CR>
