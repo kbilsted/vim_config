@@ -71,13 +71,12 @@ let mapleader=" "
 
 
 " -- code insert -- 
-inoremap fd <CR>
-inoremap df ;
-inoremap jk {<Esc>li
-inoremap jl [<Esc>li
-inoremap jæ (<Esc>li
-inoremap æa <Esc>A;
-inoremap øa <Esc>/[)}"'\]>]<CR>:nohl<CR>a<space>
+" pausing this and using US format instead - if reintroduce, reduce timeout for waiting as editing feels slow
+"inoremap jk {<Esc>li
+"inoremap jl [<Esc>li
+"inoremap jæ (<Esc>li
+"inoremap æa <Esc>A;
+"inoremap øa <Esc>/[)}"'\]>]<CR>:nohl<CR>a<space>
 
 " require vs-vim to handle control-sequence
 "save if file is changed and go to normal mode
@@ -147,18 +146,43 @@ vnoremap I :vsc Edit.ContractSelection<CR>
 
 
 " -- replace motion --
+" -- commands can be simplified we dont need   "a   but for now we keep it 
 " move r to R
 nnoremap R r
 
-" -- replace motion --
-" replace deletes to register 'a' and paste
+" (r)eplace (w)ord - deletes to register 'a' and paste - we use 'diw' because 1 word delete should not include white space
 nnoremap rw "adiwPw
-" we use 'daw' otherwise space between words counts as a word, e.g. "a b" is 3 words
+nnoremap rW "adiWPw
+
+" we use 'daw' otherwise space between words counts as a word, e.g. "aa bb " di3w, but only da2w
 nnoremap r2w "a2dawP
 nnoremap r3w "a3dawP
-" replace line
+nnoremap r4w "a4dawP
+" line
+" change line (cc) and delete line (dd) are unchanged
+" (r)eplace (l)ine
 nnoremap rl "addPj
 nnoremap r2l "a2ddPj
+nnoremap r3l "a3ddPj
+
+
+" (c)hange (w)ord - shortcut since we almost always want inner
+nnoremap cw ciw
+nnoremap cW ciW
+nnoremap dw diw
+nnoremap dW diW
+
+" (c)hange (w)(w)ord - longer cw - but not used so often 
+nnoremap cww cw
+nnoremap cwW cW
+nnoremap dww dw
+nnoremap dwW cW
+
+
+" ==
+" == misc 
+nnoremap u :vsc Edit.Undo<cr>
+nnoremap U :vsc Edit.Redo<cr> 
 
 " make the cursor does not jump back to where you started the selection.
 vnoremap y ygv<esc>
@@ -182,11 +206,12 @@ nnoremap c "ac
 nnoremap C "aC
 nnoremap d "ad
 nnoremap D "aD
-vnoremap C c
-vnoremap D d
+" no vnoremap as in visual mode c and d is 'cut'
 
 
-"delete word  - replace 'go to top of screen' 
+" ==
+" == HJKL navigation 
+"delete word  - replace H = 'go to top of screen' 
 "tempting to remap H to BOL - but we have 'A' or 'C', 'D', '_' for that
 nnoremap H "_daw	
 
@@ -200,15 +225,10 @@ vnoremap K 19kzz
 nnoremap M }
 vnoremap M }zz
 
-" replace go to bottom of screen
+" replace "go to bottom of screen"
 nnoremap L :vsc Edit.GoToDefinition<CR>
 
 
-
-
-
-nnoremap u :vsc Edit.Undo<cr>
-nnoremap U :vsc Edit.Redo<cr> 
 
 
 nnoremap <leader>j J
@@ -229,8 +249,11 @@ nnoremap <leader>gc :vsc Edit.GoToDeclaration<CR>
 nnoremap <leader>gi :vsc Edit.GoToImplementation<CR>
 nnoremap <leader>gr :vsc Edit.FindAllReferences<CR>
 
-nnoremap <leader>p :vsc Edit.GoToNextIssueInFile<CR>
-nnoremap <leader>å :vsc Edit.GoToPreviousIssueInFile<CR>
+" more logical to use [], but this is easier to reach and on NORDIC layout ] is a deadkey
+
+" this works >>>> nnoremap <leader>P :vsc Edit.GoToPreviousIssueInFile<CR>
+" this works >>>> nnoremap <leader>p :vsc Edit.GoToNextIssueInFile<CR>
+nnoremap <leader>p :vsc Edit.Resharper_GotoNextErrorInSolution<CR>
 
 " not sure what we navigate
 nnoremap <leader>i :vsc View.NavigateForward<CR>
@@ -244,6 +267,6 @@ noremap <leader>b :vsc Build.BuildSolution<CR>
 noremap <leader>bb :vsc Build.RebuildSolution<CR>
 
 " `<leader> + w(indow) + p(in)` - Toggle the pin status of the document 
-" `<leader> + w(indows) + c(lose) + a(ll)` - Close all unpinned documents 
+" `<leader> + (w)indows + (c)lose + (a)ll` - Close all unpinned documents 
 noremap <leader>wp :vsc Window.PinTab<CR>
 noremap <leader>wca :vsc Window.CloseAllButPinned<CR>
