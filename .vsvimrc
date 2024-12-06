@@ -51,7 +51,8 @@ set smartcase
 inoremap <A-o> <Esc>
 vnoremap <A-o> <Esc>
 
-" doesnt work in vsvim inoremap <A-v> <Esc>v
+" doesnt work in vsvim 
+" inoremap <A-v> <Esc>v
 inoremap <A-a> <Esc>A
 
 " alternative to vim ctr-o that goes to normal mode for 1 command
@@ -116,14 +117,14 @@ nnoremap <C-A-.> 3
 "" -- motions -- 
 ""in vim already: b = ()
 ""in vim already: B = {}
-""quote 
-"nnoremap caq ca"
-"nnoremap ciq ci"
-"nnoremap daq da"
-"nnoremap diq di"
-""array 
-"nnoremap dia "_di[
-"nnoremap cia "_ci[
+"" (c)hange (a)round (q)uote 
+nnoremap caq ca"
+nnoremap ciq ci"
+nnoremap daq da"
+nnoremap diq di"
+"" (d)elete (i)nside (a)rray 
+nnoremap dia "_di[
+nnoremap cia "_ci[
 ""match
 "nnoremap dm d%
 "nnoremap cm c%
@@ -145,7 +146,8 @@ vnoremap I :vsc Edit.ContractSelection<CR>
 
 
 
-"move r to R
+" -- replace motion --
+" move r to R
 nnoremap R r
 
 " -- replace motion --
