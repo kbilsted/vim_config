@@ -81,6 +81,7 @@ let mapleader=" "
 " require vs-vim to handle control-sequence
 "save if file is changed and go to normal mode
 inoremap <C-s> <Esc>:update<CR>
+nnoremap <C-s> <Esc>:update<CR>
 " require vs-vim to handle control-sequence
 inoremap <C-l> <Esc>:vsc Edit.GoToDefinition<CR>
 " require vs-vim to handle control-sequence
@@ -109,28 +110,48 @@ nnoremap <C-A-.> 3
 
 
 "
-""nnoremap diw "_diw
-""nnoremap ciw "_ciw
-""nnoremap diq "_di"
-""nnoremap ciq "_ci"
 "" -- motions -- 
 ""in vim already: b = ()
 ""in vim already: B = {}
 "" (c)hange (a)round (q)uote 
-nnoremap caq ca"
 nnoremap ciq ci"
-nnoremap daq da"
+nnoremap caq ca"
 nnoremap diq di"
+nnoremap daq da"
+
+"" (c)hange (a)round (p)ling
+nnoremap cip ci'
+nnoremap cap ca'
+nnoremap dip di'
+nnoremap dap da'
+
 "" (d)elete (i)nside (a)rray 
-nnoremap dia "_di[
-nnoremap cia "_ci[
+nnoremap cia ci[
+nnoremap caa ca[
+nnoremap dia di[
+nnoremap daa da[
+
+" (g)o (b)egin (b)racket - goto start ( and insert
+nnoremap gbb /(<CR>a
+nnoremap gbB /{<CR>a
+nnoremap gba /]<CR>a
+
+" (g)o (b)racket - goto end ) and insert
+nnoremap gb /)<CR>i
+vnoremap gb /)<CR>
+nnoremap ga /]<CR>i
+vnoremap ga /]<CR>
+nnoremap gB /}<CR>i
+vnoremap gB /}<CR>
+nnoremap gq /"<CR>i
+vnoremap gq /"<CR>
+
 ""match
 "nnoremap dm d%
 "nnoremap cm c%
 ""inoremap ,, <esc>:vsc Window.PreviousTab<CR>
 ""nnoremap ,, <esc>:vsc Window.PreviousTab<CR>
 "
-
 
 
 " -- visual 
@@ -227,7 +248,6 @@ vnoremap M }zz
 
 " replace "go to bottom of screen"
 nnoremap L :vsc Edit.GoToDefinition<CR>
-
 
 
 
