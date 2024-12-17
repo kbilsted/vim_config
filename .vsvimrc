@@ -7,7 +7,7 @@
 "
 " to reload the config use ':source c:\users\<user>\.vsvimrc'
 "
-" -- NOTES --
+" -- NOTES -- 
 " Windows interprets Ctrl+Alt as AltGr
 " Windows interprets Ctrl-I is identical to TAB
 " Windows interprets Ctrl-[ is identical to ESC
@@ -130,7 +130,7 @@ nnoremap daa da[
 " (g)o (s)tart (b)racket - goto start ( and insert
 nnoremap gsb /(<CR>a
 nnoremap gsB /{<CR>a
-nnoremap gsa /]<CR>a
+nnoremap gsa /[<CR>a
 
 " (g)o (b)racket - goto end ) and insert
 nnoremap gb /)<CR>i
@@ -215,12 +215,13 @@ nnoremap - dd
 " -- delete and cut -- 
 nnoremap x "_x
 nnoremap X "_X
-" C/D works as cut whereas in normal-mode it works as delete/cut-to-reg-a
-" leave my unnamed alone
+vnoremap x "_x
+vnoremap X "_X
+
 nnoremap c "ac
-vnoremap c "ac
+"vnoremap c "ac
+"vnoremap d "ad
 nnoremap C "aC
-vnoremap d "ad
 nnoremap d "ad
 nnoremap D "aD
 " no vnoremap as in visual mode c and d is 'cut'
@@ -287,8 +288,8 @@ nnoremap <leader>k :vsc Window.PreviousTab<CR>
 nnoremap <leader>b :vsc Build.BuildSolution<CR>
 nnoremap <leader>cbb :vsc Build.RebuildSolution<CR>
 
-" (w)indow (f)ile tree
-nnoremap <leader>wf :vsc View.TrackActivityInSolutionExplorer<CR>:vsc View.SolutionExplorer<CR>
+" (w)indow (e)xplore files
+nnoremap <leader>we :vsc View.TrackActivityInSolutionExplorer<CR>:vsc View.SolutionExplorer<CR>
 
 " `<leader> + w(indow) + p(in)` - Toggle the pin status of the document 
 " `<leader> + (w)indows + (c)lose + (a)ll` - Close all unpinned documents 
