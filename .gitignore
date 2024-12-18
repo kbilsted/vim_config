@@ -13,3 +13,10 @@ Soap*/
 web*/
 Intel*/
 *.dmp
+/.*
+/**/*.ini
+/*.json
+/keymapper.conf
+/*.xml
+/source/repos/
+/*.properties
